@@ -6,8 +6,8 @@ using namespace std;
  *
  *Problem One:
  *Find the longest increasing sub sequence;
- ******O(n)
- ***/
+ ***********O(n)
+ **/
  int LISdyna(int *sequence,int lenth)
  {
  	int dp_seq[lenth];
@@ -26,38 +26,4 @@ using namespace std;
  			LIS=dp_seq;
  	return dp_seq;
  }
-/****
- *
- *Problem One
- *Version two
- ******O(nlogn)
- ***/
- int LIS(int *sequence,int lenth)
- {
- 	int biSearch(int aim,int tail,int *sequence,int *smallist);
- 	int smallist[lenth];//smallist[k] means the smallist tail of all the k-lenth subsequence;
- 	smallist[1]=a[0];
- 	int now_lenth=1;
- 	int visit_flag;     //visit the whole sequence, we make the LIS longer 
- 	                    //by add subsequence and fresh the record;
- 	for(visit_flag=1;visit_flag<lenth;visit_flag++)
- 	{
- 		if(sequence[visit_flag]>=smallist[now_lenth])
- 			smallist[++now_lenth]=sequence[visit_flag];
- 		else
- 			smallist[biSearch(visit_flag,now_lenth,sequence,smallist)]=sequence[visit_flag];
- 	}
- 	return now_lenth;
- }
- int biSearch(int aim,int tail,int *sequence,int *smallist)
- {
- 	if(sequence[aim]<smallist[1])
- 		return 1;
- 	for(int lo=1,hi=tail;lo!=hi-1;){
- 		if(smallist[tail=(lo+hi)/2]<=sequence[aim])
- 			lo=tail;
- 		else
- 			hi=tail;
- 	}
- 	return hi;
- }
+
