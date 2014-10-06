@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string.h>
+#include <stdio.h>
 using namespace std;
 
 /****
@@ -23,8 +23,8 @@ using namespace std;
  	int LIS=dp_seq[0];
  	for(int i=1;i<lenth;i++)
  		if(dp_seq[i]>LIS)
- 			LIS=dp_seq;
- 	return dp_seq;
+ 			LIS=dp_seq[i];
+ 	return LIS;
  }
 /****
  *
@@ -36,7 +36,7 @@ using namespace std;
  {
  	int biSearch(int aim,int tail,int *sequence,int *smallist);
  	int smallist[lenth];//smallist[k] means the smallist tail of all the k-lenth subsequence;
- 	smallist[1]=a[0];
+ 	smallist[1]=sequence[0];
  	int now_lenth=1;
  	int visit_flag;     //visit the whole sequence, we make the LIS longer 
  	                    //by add subsequence and fresh the record;
@@ -53,7 +53,8 @@ using namespace std;
  {
  	if(sequence[aim]<smallist[1])
  		return 1;
- 	for(int lo=1,hi=tail;lo!=hi-1;){
+ 	int lo,hi;
+ 	for(lo=1,hi=tail;lo!=hi-1;){
  		if(smallist[tail=(lo+hi)/2]<=sequence[aim])
  			lo=tail;
  		else
@@ -61,3 +62,4 @@ using namespace std;
  	}
  	return hi;
  }
+ 
