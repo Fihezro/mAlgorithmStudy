@@ -26,9 +26,7 @@ using namespace std;
  			LIS=dp_seq[i];
  	return LIS;
  }
-<<<<<<< HEAD
 
-=======
 /****
  *
  *Problem One
@@ -66,4 +64,4 @@ using namespace std;
  	return hi;
  }
  
->>>>>>> origin/master
+
